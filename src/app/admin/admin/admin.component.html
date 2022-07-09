@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="pt-5">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-6">
+                        <h3>All Books</h3>
+                    </div>
+
+                    <div class="col-6 text-end">
+                        <button class="btn btn-primary" (click)="createBookRequest()">Create Button</button>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Author</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let book of bookList; index as ind">
+                            <td>{{ ind + 1 }}</td>
+                            <td>{{ book.title}}</td>
+                            <td>{{ book.price | currency: "USD"}}</td>
+                            <td>{{ book.author}}</td>
+                            <td>{{ book.createTime | date: "medium"}}</td>
+                            <td>
+                                <button class="btn btn-primary me-1" (click)="editBookWatcher(book)">Edit</button>
+                                <button class="btn btn-danger" (click)="deleteBook(book,ind)">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-book [book]="selectedBook" (save)="saveBookWatcher($event)"></app-book>

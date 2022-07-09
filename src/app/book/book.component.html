@@ -1,0 +1,81 @@
+<div class="modal fade" id="bookModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form #f="ngForm" (ngSubmit)="f.form.valid && saveBook()">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Book Detail</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="alert alert-danger" *ngIf="errorMessage">
+                        {{ errorMessage }}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" 
+                        id="title" 
+                        class="form-control"
+                        [(ngModel)]="book.title"
+                        #title="ngModel">
+
+                        <div class="alert-danger" *ngIf="f.submitted && !title.valid">
+                            Title is required
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="title">author</label>
+                        <input type="text" 
+                        id="title" 
+                        class="form-control"
+                        [(ngModel)]="book.author"
+                        #author="ngModel">
+
+                        <div class="alert-danger" *ngIf="f.submitted && !title.valid">
+                            author is required
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="title">Price</label>
+                        <input type="number" 
+                        id="title" 
+                        class="form-control"
+                        [(ngModel)]="book.price"
+                        #price="ngModel">
+
+                        <div class="alert-danger" *ngIf="f.submitted && (!title.valid || book.price <= 0)">
+                            price is required and should be greater than 0
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="title">Description</label>
+                        <input type="number" 
+                        id="title" 
+                        class="form-control"
+                        [(ngModel)]="book.description"
+                        #description="ngModel">
+
+                        <div class="alert-danger" *ngIf="f.submitted && !description.valid">
+                            description is required
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal"></button>
+                    <button class="btn btn-primary" type="submit"></button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

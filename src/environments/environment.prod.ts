@@ -1,3 +1,5 @@
+
 export const environment = {
-  production: true
-};
+    production: true,
+    BASE_URL: "https://test-for-production"
+  };

@@ -1,0 +1,8 @@
+{
+    "name":"onlinebook-seller",
+    "buildpacks":[
+        {
+            "url":"heroku/nodejs"
+        }
+    ]
+}
